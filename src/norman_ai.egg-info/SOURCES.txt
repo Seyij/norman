@@ -8,3 +8,4 @@ src/norman_ai.egg-info/PKG-INFO
 src/norman_ai.egg-info/SOURCES.txt
 src/norman_ai.egg-info/dependency_links.txt
 src/norman_ai.egg-info/top_level.txt
+src/norman_ai/data/norman_model1.h5

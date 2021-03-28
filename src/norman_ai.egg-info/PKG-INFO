@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: norman-ai
-Version: 0.0.1
+Version: 0.0.3
 Summary: A package for automation of the novel object recognition test.
 Home-page: https://github.com/Seyij/norman
 Author: seyij_p
@@ -10,10 +10,13 @@ Description: # The NORMAN System
         
         The Novel Object Recognition Mouse Analysis Network (NORMAN) system is a package for automation of the novel object recognition behavioural assay in neuroscience studies.
         
+        PyPi link: https://pypi.org/project/norman-ai/
+        
         This is part of work that will be presented as a poster at the [BNA Festival 2021](https://meetings.bna.org.uk/bna2021/) which runs from the 12-15th of April. It was developed as part of an MSci degree at the University of Dundee. The package and repository will be updated with video outlines and other details shortly, in the run up to the BNA festival.
         
         Author: Oluwaseyi Jesusanmi  
-        Twitter: @neuroseyience  
+        Twitter: @neuroseyience   
+        
         
         ![NORMAN labelling example0](https://github.com/Seyij/norman/blob/master/media/slide11_vid_Trim.gif)
         ![NORMAN labelling example1](https://github.com/Seyij/norman/blob/master/media/test_79_norman_Trim.gif)
@@ -73,7 +76,7 @@ Description: # The NORMAN System
         #install functioning version of plotting library
         conda install matplotlib=3.0.3
         #install norman
-        pip install norman_ai
+        pip install norman-ai
         ```
         Now that installation is complete, perform tests to see if installation was successful using ipython. Ipython is a python program useful for working at the command line.
         

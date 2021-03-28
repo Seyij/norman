@@ -858,7 +858,7 @@ def label_vid(relative_pos, model_path="normal"):
     """
     #determine whether to load default package norman model, or another
     if model_path=="normal":
-        model_path = pkg_resources.resource_filename("norman", "data/norman_model1.h5")
+        model_path = pkg_resources.resource_filename("norman_ai", "data/norman_model1.h5")
     
     #load the norman network model from a file
     norman_model = keras.models.load_model(model_path)
