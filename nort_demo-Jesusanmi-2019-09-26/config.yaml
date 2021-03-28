@@ -1,0 +1,65 @@
+    # Project definitions (do not edit)
+Task: nort_demo
+scorer: Jesusanmi
+date: Sep26
+multianimalproject:
+
+    # Project path (change when moving around)
+project_path: C:\Users\seyij\Documents\norman_project\cluster_data\nort_demo-Jesusanmi-2019-09-26
+
+    # Annotation data set configuration (and individual video cropping parameters)
+video_sets:
+  C:\\Users\seyij\Documents\\norman_project\cluster_sync\\nort_demo-Jesusanmi-2019-09-26\\videos\\mouse1.mp4:
+    crop: 120, 517, 18, 479
+  C:\\Users\seyij\Documents\\norman_project\cluster_sync\\nort_demo-Jesusanmi-2019-09-26\\videos\\mouse2.mp4:
+    crop: 122, 504, 18, 477
+  C:\\Users\seyij\Documents\\norman_project\cluster_sync\\nort_demo-Jesusanmi-2019-09-26\\videos\\Test 1.mp4:
+    crop: 0, 344, 0, 480
+  C:\\Users\seyij\Documents\\norman_project\cluster_sync\\nort_demo-Jesusanmi-2019-09-26\\videos\\Test 2.mp4:
+    crop: 0, 336, 0, 480
+
+bodyparts:
+- nose
+- l_ear
+- r_ear
+- tailbase
+start: 0
+stop: 1
+numframes2pick: 50
+
+    # Plotting configuration
+skeleton:
+- - nose
+  - l_ear
+- - tailbase
+  - r_ear
+skeleton_color: black
+pcutoff: 0.1
+dotsize: 3
+alphavalue: 0.7
+colormap: jet
+
+    # Training,Evaluation and Analysis configuration
+TrainingFraction:
+- 0.95
+iteration: 0
+default_net_type:
+default_augmenter:
+snapshotindex: -1
+batch_size: 8
+
+    # Cropping Parameters (for analysis and outlier frame detection)
+cropping: false
+croppedtraining:
+    #if cropping is true for analysis, then set the values here:
+x1: 0
+x2: 640
+y1: 277
+y2: 624
+
+    # Refinement configuration (parameters from annotation dataset configuration also relevant in this stage)
+corner2move2:
+- 50
+- 50
+move2corner: true
+resnet: 50

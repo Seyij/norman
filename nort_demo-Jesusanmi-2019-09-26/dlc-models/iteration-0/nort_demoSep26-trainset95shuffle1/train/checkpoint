@@ -1,0 +1,6 @@
+model_checkpoint_path: "/homes/ojesusanmi/dlc_test/nort_demo-Jesusanmi-2019-09-26/dlc-models/iteration-0/nort_demoSep26-trainset95shuffle1/train/snapshot-5000"
+all_model_checkpoint_paths: "/homes/ojesusanmi/dlc_test/nort_demo-Jesusanmi-2019-09-26/dlc-models/iteration-0/nort_demoSep26-trainset95shuffle1/train/snapshot-1000"
+all_model_checkpoint_paths: "/homes/ojesusanmi/dlc_test/nort_demo-Jesusanmi-2019-09-26/dlc-models/iteration-0/nort_demoSep26-trainset95shuffle1/train/snapshot-2000"
+all_model_checkpoint_paths: "/homes/ojesusanmi/dlc_test/nort_demo-Jesusanmi-2019-09-26/dlc-models/iteration-0/nort_demoSep26-trainset95shuffle1/train/snapshot-3000"
+all_model_checkpoint_paths: "/homes/ojesusanmi/dlc_test/nort_demo-Jesusanmi-2019-09-26/dlc-models/iteration-0/nort_demoSep26-trainset95shuffle1/train/snapshot-4000"
+all_model_checkpoint_paths: "/homes/ojesusanmi/dlc_test/nort_demo-Jesusanmi-2019-09-26/dlc-models/iteration-0/nort_demoSep26-trainset95shuffle1/train/snapshot-5000"

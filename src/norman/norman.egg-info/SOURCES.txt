@@ -1,0 +1,9 @@
+MANIFEST.in
+README.md
+pyproject.toml
+setup.cfg
+norman/data/norman_model1.h5
+norman/norman.egg-info/PKG-INFO
+norman/norman.egg-info/SOURCES.txt
+norman/norman.egg-info/dependency_links.txt
+norman/norman.egg-info/top_level.txt

@@ -1,0 +1,260 @@
+2019-10-16 17:21:47 Config:
+{'all_joints': [[0], [1], [2], [3]],
+ 'all_joints_names': ['nose', 'l_ear', 'r_ear', 'tailbase'],
+ 'batch_size': 1,
+ 'bottomheight': 400,
+ 'crop': True,
+ 'crop_pad': 0,
+ 'cropratio': 0.4,
+ 'dataset': 'training-datasets/iteration-0/UnaugmentedDataSet_nort_demoSep26/nort_demo_Jesusanmi95shuffle1.mat',
+ 'dataset_type': 'default',
+ 'deterministic': False,
+ 'display_iters': 1000,
+ 'fg_fraction': 0.25,
+ 'global_scale': 0.8,
+ 'init_weights': '/homes/ojesusanmi/miniconda3/envs/dlc/lib/python3.6/site-packages/deeplabcut/pose_estimation_tensorflow/models/pretrained/resnet_v1_50.ckpt',
+ 'intermediate_supervision': False,
+ 'intermediate_supervision_layer': 12,
+ 'leftwidth': 400,
+ 'location_refinement': True,
+ 'locref_huber_loss': True,
+ 'locref_loss_weight': 0.05,
+ 'locref_stdev': 7.2801,
+ 'log_dir': 'log',
+ 'max_input_size': 1500,
+ 'mean_pixel': [123.68, 116.779, 103.939],
+ 'metadataset': 'training-datasets/iteration-0/UnaugmentedDataSet_nort_demoSep26/Documentation_data-nort_demo_95shuffle1.pickle',
+ 'min_input_size': 64,
+ 'minsize': 100,
+ 'mirror': False,
+ 'multi_step': [[0.005, 10000],
+                [0.02, 430000],
+                [0.002, 730000],
+                [0.001, 1030000]],
+ 'net_type': 'resnet_50',
+ 'num_joints': 4,
+ 'optimizer': 'sgd',
+ 'pos_dist_thresh': 17,
+ 'project_path': '/homes/ojesusanmi/dlc_test/nort_demo-Jesusanmi-2019-09-26',
+ 'regularize': False,
+ 'rightwidth': 400,
+ 'save_iters': 50000,
+ 'scale_jitter_lo': 0.5,
+ 'scale_jitter_up': 1.25,
+ 'scoremap_dir': 'test',
+ 'shuffle': True,
+ 'snapshot_prefix': '/homes/ojesusanmi/dlc_test/nort_demo-Jesusanmi-2019-09-26/dlc-models/iteration-0/nort_demoSep26-trainset95shuffle1/train/snapshot',
+ 'stride': 8.0,
+ 'topheight': 400,
+ 'weigh_negatives': False,
+ 'weigh_only_present_joints': False,
+ 'weigh_part_predictions': False,
+ 'weight_decay': 0.0001}
+2019-10-16 17:22:27 iteration: 100 loss: 0.0613 lr: 0.005
+2019-10-16 17:22:49 iteration: 200 loss: 0.0302 lr: 0.005
+2019-10-16 17:23:10 iteration: 300 loss: 0.0277 lr: 0.005
+2019-10-16 17:23:30 iteration: 400 loss: 0.0264 lr: 0.005
+2019-10-16 17:23:51 iteration: 500 loss: 0.0246 lr: 0.005
+2019-10-16 17:24:13 iteration: 600 loss: 0.0223 lr: 0.005
+2019-10-16 17:24:34 iteration: 700 loss: 0.0207 lr: 0.005
+2019-10-16 17:24:56 iteration: 800 loss: 0.0203 lr: 0.005
+2019-10-16 17:25:17 iteration: 900 loss: 0.0187 lr: 0.005
+2019-10-16 17:25:38 iteration: 1000 loss: 0.0167 lr: 0.005
+2019-10-16 17:25:59 iteration: 1100 loss: 0.0169 lr: 0.005
+2019-10-16 17:26:20 iteration: 1200 loss: 0.0154 lr: 0.005
+2019-10-16 17:26:40 iteration: 1300 loss: 0.0144 lr: 0.005
+2019-10-16 17:27:02 iteration: 1400 loss: 0.0146 lr: 0.005
+2019-10-16 17:27:23 iteration: 1500 loss: 0.0141 lr: 0.005
+2019-10-16 17:27:44 iteration: 1600 loss: 0.0138 lr: 0.005
+2019-10-16 17:28:04 iteration: 1700 loss: 0.0131 lr: 0.005
+2019-10-16 17:28:25 iteration: 1800 loss: 0.0124 lr: 0.005
+2019-10-16 17:28:46 iteration: 1900 loss: 0.0119 lr: 0.005
+2019-10-16 17:29:07 iteration: 2000 loss: 0.0115 lr: 0.005
+2019-10-16 17:29:28 iteration: 2100 loss: 0.0117 lr: 0.005
+2019-10-16 17:29:49 iteration: 2200 loss: 0.0106 lr: 0.005
+2019-10-16 17:30:10 iteration: 2300 loss: 0.0111 lr: 0.005
+2019-10-16 17:30:30 iteration: 2400 loss: 0.0107 lr: 0.005
+2019-10-16 17:30:51 iteration: 2500 loss: 0.0101 lr: 0.005
+2019-10-16 17:31:12 iteration: 2600 loss: 0.0098 lr: 0.005
+2019-10-16 17:31:33 iteration: 2700 loss: 0.0104 lr: 0.005
+2019-10-16 17:31:53 iteration: 2800 loss: 0.0097 lr: 0.005
+2019-10-16 17:32:14 iteration: 2900 loss: 0.0096 lr: 0.005
+2019-10-16 17:32:35 iteration: 3000 loss: 0.0098 lr: 0.005
+2019-10-16 17:32:56 iteration: 3100 loss: 0.0091 lr: 0.005
+2019-10-16 17:33:17 iteration: 3200 loss: 0.0085 lr: 0.005
+2019-10-16 17:33:39 iteration: 3300 loss: 0.0087 lr: 0.005
+2019-10-16 17:34:00 iteration: 3400 loss: 0.0087 lr: 0.005
+2019-10-16 17:34:21 iteration: 3500 loss: 0.0085 lr: 0.005
+2019-10-16 17:34:41 iteration: 3600 loss: 0.0090 lr: 0.005
+2019-10-16 17:35:03 iteration: 3700 loss: 0.0083 lr: 0.005
+2019-10-16 17:35:24 iteration: 3800 loss: 0.0081 lr: 0.005
+2019-10-16 17:35:45 iteration: 3900 loss: 0.0084 lr: 0.005
+2019-10-16 17:36:06 iteration: 4000 loss: 0.0083 lr: 0.005
+2019-10-16 17:36:27 iteration: 4100 loss: 0.0078 lr: 0.005
+2019-10-16 17:36:48 iteration: 4200 loss: 0.0081 lr: 0.005
+2019-10-16 17:37:10 iteration: 4300 loss: 0.0072 lr: 0.005
+2019-10-16 17:37:31 iteration: 4400 loss: 0.0071 lr: 0.005
+2019-10-16 17:37:52 iteration: 4500 loss: 0.0075 lr: 0.005
+2019-10-16 17:38:13 iteration: 4600 loss: 0.0069 lr: 0.005
+2019-10-16 17:38:33 iteration: 4700 loss: 0.0074 lr: 0.005
+2019-10-16 17:38:55 iteration: 4800 loss: 0.0068 lr: 0.005
+2019-10-16 17:39:16 iteration: 4900 loss: 0.0078 lr: 0.005
+2019-10-16 17:39:37 iteration: 5000 loss: 0.0071 lr: 0.005
+2019-10-16 18:09:02 Note: NumExpr detected 28 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2019-10-16 18:09:02 NumExpr defaulting to 8 threads.
+2019-10-16 18:09:03 Config:
+{'all_joints': [[0], [1], [2], [3]],
+ 'all_joints_names': ['nose', 'l_ear', 'r_ear', 'tailbase'],
+ 'batch_size': 1,
+ 'bottomheight': 400,
+ 'crop': True,
+ 'crop_pad': 0,
+ 'cropratio': 0.4,
+ 'dataset': 'training-datasets/iteration-0/UnaugmentedDataSet_nort_demoSep26/nort_demo_Jesusanmi95shuffle1.mat',
+ 'dataset_type': 'default',
+ 'deterministic': False,
+ 'display_iters': 1000,
+ 'fg_fraction': 0.25,
+ 'global_scale': 0.8,
+ 'init_weights': '/homes/ojesusanmi/miniconda3/envs/dlc/lib/python3.6/site-packages/deeplabcut/pose_estimation_tensorflow/models/pretrained/resnet_v1_50.ckpt',
+ 'intermediate_supervision': False,
+ 'intermediate_supervision_layer': 12,
+ 'leftwidth': 400,
+ 'location_refinement': True,
+ 'locref_huber_loss': True,
+ 'locref_loss_weight': 0.05,
+ 'locref_stdev': 7.2801,
+ 'log_dir': 'log',
+ 'max_input_size': 1500,
+ 'mean_pixel': [123.68, 116.779, 103.939],
+ 'metadataset': 'training-datasets/iteration-0/UnaugmentedDataSet_nort_demoSep26/Documentation_data-nort_demo_95shuffle1.pickle',
+ 'min_input_size': 64,
+ 'minsize': 100,
+ 'mirror': False,
+ 'multi_step': [[0.005, 10000],
+                [0.02, 430000],
+                [0.002, 730000],
+                [0.001, 1030000]],
+ 'net_type': 'resnet_50',
+ 'num_joints': 4,
+ 'optimizer': 'sgd',
+ 'pos_dist_thresh': 17,
+ 'project_path': '/homes/ojesusanmi/dlc_test/nort_demo-Jesusanmi-2019-09-26',
+ 'regularize': False,
+ 'rightwidth': 400,
+ 'save_iters': 50000,
+ 'scale_jitter_lo': 0.5,
+ 'scale_jitter_up': 1.25,
+ 'scoremap_dir': 'test',
+ 'shuffle': True,
+ 'snapshot_prefix': '/homes/ojesusanmi/dlc_test/nort_demo-Jesusanmi-2019-09-26/dlc-models/iteration-0/nort_demoSep26-trainset95shuffle1/test/snapshot',
+ 'stride': 8.0,
+ 'topheight': 400,
+ 'weigh_negatives': False,
+ 'weigh_only_present_joints': False,
+ 'weigh_part_predictions': False,
+ 'weight_decay': 0.0001}
+2019-10-16 18:17:23 Config:
+{'all_joints': [[0], [1], [2], [3]],
+ 'all_joints_names': ['nose', 'l_ear', 'r_ear', 'tailbase'],
+ 'batch_size': 1,
+ 'bottomheight': 400,
+ 'crop': True,
+ 'crop_pad': 0,
+ 'cropratio': 0.4,
+ 'dataset': 'training-datasets/iteration-0/UnaugmentedDataSet_nort_demoSep26/nort_demo_Jesusanmi95shuffle1.mat',
+ 'dataset_type': 'default',
+ 'deterministic': False,
+ 'display_iters': 1000,
+ 'fg_fraction': 0.25,
+ 'global_scale': 0.8,
+ 'init_weights': '/homes/ojesusanmi/miniconda3/envs/dlc/lib/python3.6/site-packages/deeplabcut/pose_estimation_tensorflow/models/pretrained/resnet_v1_50.ckpt',
+ 'intermediate_supervision': False,
+ 'intermediate_supervision_layer': 12,
+ 'leftwidth': 400,
+ 'location_refinement': True,
+ 'locref_huber_loss': True,
+ 'locref_loss_weight': 0.05,
+ 'locref_stdev': 7.2801,
+ 'log_dir': 'log',
+ 'max_input_size': 1500,
+ 'mean_pixel': [123.68, 116.779, 103.939],
+ 'metadataset': 'training-datasets/iteration-0/UnaugmentedDataSet_nort_demoSep26/Documentation_data-nort_demo_95shuffle1.pickle',
+ 'min_input_size': 64,
+ 'minsize': 100,
+ 'mirror': False,
+ 'multi_step': [[0.005, 10000],
+                [0.02, 430000],
+                [0.002, 730000],
+                [0.001, 1030000]],
+ 'net_type': 'resnet_50',
+ 'num_joints': 4,
+ 'optimizer': 'sgd',
+ 'pos_dist_thresh': 17,
+ 'project_path': '/homes/ojesusanmi/dlc_test/nort_demo-Jesusanmi-2019-09-26',
+ 'regularize': False,
+ 'rightwidth': 400,
+ 'save_iters': 50000,
+ 'scale_jitter_lo': 0.5,
+ 'scale_jitter_up': 1.25,
+ 'scoremap_dir': 'test',
+ 'shuffle': True,
+ 'snapshot_prefix': '/homes/ojesusanmi/dlc_test/nort_demo-Jesusanmi-2019-09-26/dlc-models/iteration-0/nort_demoSep26-trainset95shuffle1/test/snapshot',
+ 'stride': 8.0,
+ 'topheight': 400,
+ 'weigh_negatives': False,
+ 'weigh_only_present_joints': False,
+ 'weigh_part_predictions': False,
+ 'weight_decay': 0.0001}
+2019-10-16 18:22:04 Config:
+{'all_joints': [[0], [1], [2], [3]],
+ 'all_joints_names': ['nose', 'l_ear', 'r_ear', 'tailbase'],
+ 'batch_size': 1,
+ 'bottomheight': 400,
+ 'crop': True,
+ 'crop_pad': 0,
+ 'cropratio': 0.4,
+ 'dataset': 'training-datasets/iteration-0/UnaugmentedDataSet_nort_demoSep26/nort_demo_Jesusanmi95shuffle1.mat',
+ 'dataset_type': 'default',
+ 'deterministic': False,
+ 'display_iters': 1000,
+ 'fg_fraction': 0.25,
+ 'global_scale': 0.8,
+ 'init_weights': '/homes/ojesusanmi/miniconda3/envs/dlc/lib/python3.6/site-packages/deeplabcut/pose_estimation_tensorflow/models/pretrained/resnet_v1_50.ckpt',
+ 'intermediate_supervision': False,
+ 'intermediate_supervision_layer': 12,
+ 'leftwidth': 400,
+ 'location_refinement': True,
+ 'locref_huber_loss': True,
+ 'locref_loss_weight': 0.05,
+ 'locref_stdev': 7.2801,
+ 'log_dir': 'log',
+ 'max_input_size': 1500,
+ 'mean_pixel': [123.68, 116.779, 103.939],
+ 'metadataset': 'training-datasets/iteration-0/UnaugmentedDataSet_nort_demoSep26/Documentation_data-nort_demo_95shuffle1.pickle',
+ 'min_input_size': 64,
+ 'minsize': 100,
+ 'mirror': False,
+ 'multi_step': [[0.005, 10000],
+                [0.02, 430000],
+                [0.002, 730000],
+                [0.001, 1030000]],
+ 'net_type': 'resnet_50',
+ 'num_joints': 4,
+ 'optimizer': 'sgd',
+ 'pos_dist_thresh': 17,
+ 'project_path': '/homes/ojesusanmi/dlc_test/nort_demo-Jesusanmi-2019-09-26',
+ 'regularize': False,
+ 'rightwidth': 400,
+ 'save_iters': 50000,
+ 'scale_jitter_lo': 0.5,
+ 'scale_jitter_up': 1.25,
+ 'scoremap_dir': 'test',
+ 'shuffle': True,
+ 'snapshot_prefix': '/homes/ojesusanmi/dlc_test/nort_demo-Jesusanmi-2019-09-26/dlc-models/iteration-0/nort_demoSep26-trainset95shuffle1/test/snapshot',
+ 'stride': 8.0,
+ 'topheight': 400,
+ 'weigh_negatives': False,
+ 'weigh_only_present_joints': False,
+ 'weigh_part_predictions': False,
+ 'weight_decay': 0.0001}
