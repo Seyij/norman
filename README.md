@@ -9,12 +9,13 @@ Twitter: @neuroseyience
 
 [Video placeholder]
 
+
 ---
 ### Contents
 1. [System Overview](#system-overview)
 2. [System Requirements](#system-requirements)
 3. [Installation guide](#installation-guide)
-4. [Video to DI walkthrough](#video-to-di-walthrough)
+4. [Video to DI walkthrough](#video-to-di-walkthrough)
 5. [Function details](#function-details)
 6. [Using Deeplabcut with NORMAN](#using-deeplabcut-with-norman)
 7. [Glossary](#glossary)
