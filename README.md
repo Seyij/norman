@@ -7,8 +7,8 @@ This is part of work that will be presented as a poster at the [BNA Festival 202
 Author: Oluwaseyi Jesusanmi  
 Twitter: @neuroseyience  
 
-[Video placeholder]
-
+![NORMAN labelling example0](https://github.com/Seyij/norman/blob/master/media/slide11_vid_Trim.gif)
+![NORMAN labelling example1](https://github.com/Seyij/norman/blob/master/media/test_79_norman_Trim.gif)
 
 ---
 ### Contents
@@ -65,7 +65,7 @@ conda install spyder
 #install functioning version of plotting library
 conda install matplotlib=3.0.3
 #install norman
-pip install norman
+pip install norman_ai
 ```
 Now that installation is complete, perform tests to see if installation was successful using ipython. Ipython is a python program useful for working at the command line.
 
@@ -81,7 +81,7 @@ import tensorflow as tf
 sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 
 #check if norman was installed
-import norman.norman_functions as nf
+import norman_ai.norman_functions as nf
 nf.run_gui()
 #a user interface should appear
 ```
@@ -100,21 +100,21 @@ ipython
 ```
 ```python
 #import norman
-import norman.norman_functions as nf
+import norman_ai.norman_functions as nf
 #open graphical user interface (gui)
 nf.run_gui()
 ```
 1. Input the video file "test_79.mp4" by clicking on "please select a video", a file selection window will open.
-[Image placeholder]
+![gui1](https://github.com/Seyij/norman/blob/master/media/gui1_m.png)
 2. Select the corresponding deeplabcut tracking csv "test_79_poses_filtered.csv" file by clicking on "please select a pose file".
-[Image placeholder]
+![gui2](https://github.com/Seyij/norman/blob/master/media/gui2_m.png)
 3. Enter which object is the video is novel to the mouse.
-[Image placeholder]
+![gui3](https://github.com/Seyij/norman/blob/master/media/gui3_m.png)
 4. Click accept and run video analysis. (Selecting the norman model is optional).
 5. Results will be in the bottom left.
-[Image placeholder]
+![gui4](https://github.com/Seyij/norman/blob/master/media/gui4_m.png)
 6. To show whether the find_objects function worked correctly, press the "Display object detection" button.
-[Image placeholder]
+![gui5](https://github.com/Seyij/norman/blob/master/media/gui5.png)
 7. Press the "Visualisation of NORMAN labelling" button to produce a video showing how NORMAN labelled the video. The video will be in the same directory as the original video, with "norman" added to the name.
 * Play the video and see how NORMAN does.
 
@@ -125,7 +125,7 @@ To follow the code walkthrough set the working directory to the demo folder in t
 
 ```python
 #import norman functions
-import norman.norman_functions as nf
+import norman_ai.norman_functions as nf
 #import deeplabcut functions
 import deeplabcut as dlc
 
@@ -175,7 +175,7 @@ Though very few NORMAN functions are needed to extract a discrimination index fr
 
 ```python
 #norman help example
-import norman.norman_functions as nf
+import norman_ai.norman_functions as nf
 # ask for documentation for the function
 help(nf.find_objects)
 
@@ -186,7 +186,7 @@ The "norkid" class handles all the processes to analyse a video, while holding t
 
 ```python
 #%% norkid object example
-import norman.norman_functions as nf
+import norman_ai.norman_functions as nf
 from matplotlib import pyplot as plt
 
 #get video name, norman model file and deeplabcut tracking file
@@ -203,13 +203,13 @@ x.video_name
 plt.imshow(x.median_img)
 
 ```
-[Image placeholder]
+![norkid1](https://github.com/Seyij/norman/blob/master/media/norkid1_med2_fo1.png)
 
 ```python
 # show find objects outline image
 plt.imshow(x.fo_img)
 ```
-[Image placeholder]
+![norkid2](https://github.com/Seyij/norman/blob/master/media/norkid2_fo2.png)
 
 ```python
 #view object location datafrane
@@ -238,7 +238,7 @@ Extract a frame or multiple frames from a video. Outputs an image from a video a
 ```python
 # Function arguments = ext_frame(vid_name, frame_index, out_name=False)
 # Extract frame example 
-import norman.norman_functions as nf
+import norman_ai.norman_functions as nf
 # set video name
 my_video = “test_79.mp4”
 
@@ -262,7 +262,7 @@ Changes the resolution of a video to a specified value on the x and y axis. Crea
 # Function Arguments: reso_change(input_vid, out_vid, res=(640, 480))
 # Resolution change example.
 #Please note new video is created, original video is not affected
-import norman.norman_functions as nf
+import norman_ai.norman_functions as nf
 # set video name
 my_video = “test_79.mp4”
 
@@ -278,7 +278,7 @@ This function removes the mouse from the video and produces an image of the bare
 ```python
 #Function arguments: median_filt_video(video_name, show=False, out_file=False, select_no=15)
 #%% Median filter example
-import norman.norman_functions as nf
+import norman_ai.norman_functions as nf
 from matplotlib import pyplot as plt
 # set video name
 my_video = “test_79.mp4”
@@ -286,13 +286,13 @@ my_video = “test_79.mp4”
 #show what a single frame looks like before filtering
 plt.imshow(nf.ext_frame(my_video, 42))
 ```
-[Image placeholder]
+![med1](https://github.com/Seyij/norman/blob/master/media/med1.png)
 
 ```python
 #use median filter with default 15 frames, show the result, output to variable and to file
 x = nf.median_filt_video(my_video, show=True, out_file="filtered.png")
 ```
-[Image placeholder]
+![med2](https://github.com/Seyij/norman/blob/master/media/norkid1_med2_fo1.png)
 
 ```python
 #use median filter with specified number of frames, output to variable
@@ -306,7 +306,7 @@ This automatically finds the 2 experiment objects and outputs the locations, are
 ```python
 # Function Arguments: find_objects(image_or_path, show=False, img_out=False, im_write=False)
 # Find objects example
-import norman.norman_functions as nf
+import norman_ai.norman_functions as nf
 from matplotlib import pyplot as plt
 # set video name
 my_video = “test_79.mp4”
@@ -318,12 +318,12 @@ nf.median_filt_video(my_video, out_file="box_img.png")
 #show image using matplotlib. Note it may show in false colour
 plt.imshow(box_image)
 ```
-[Image placeholder]
+![fo1](https://github.com/Seyij/norman/blob/master/media/norkid1_med2_fo1.png)
 ```python
 #use the object detector on an image array, show the result, save the output as pandas dataframe
 x = nf.find_objects(box_image, show=True)
 ```
-[Image placeholder]
+![fo2](https://github.com/Seyij/norman/blob/master/media/norkid2_fo2.png)
 
 ```python
 #use object detector on an image file, show the result, save output as pandas dataframe
@@ -342,7 +342,7 @@ This function takes in a directory of images, and outputs a video created from t
 ```python
 #Function arguments: make_video(image_folder, new_vid, fps=25)
 # Make video example
-import norman.norman_functions as nf
+import norman_ai.norman_functions as nf
 
 # make a new video from a folder of images with an fps of 25
 nf.make_video("many_frames", "vid_new.mp4")
@@ -356,7 +356,7 @@ Prediction in the case of the NORMAN system refers to the NORMAN network model t
 ```python
 #Function arguments: label_vid(model_path, relative_pos)
 # Label vid example
-import norman.norman_functions as nf
+import norman_ai.norman_functions as nf
 
 #input video name
 video = "test_79.mp4"
@@ -380,7 +380,7 @@ The draw_vid() function visualises the NORMAN model predictions (see figure). Th
 ```python
 # Function arguments: draw_vid(y_labels, input_vid, out_name=False)
 # Draw vid example
-import norman.norman_functions as nf
+import norman_ai.norman_functions as nf
 
 #input video name
 video = "test_79.mp4"
@@ -410,7 +410,7 @@ This function only produced the DI, time spent with each object and the fps.
 
 ```python
 # calc di example
-import norman.norman_functions as nf
+import norman_ai.norman_functions as nf
 
 #input video name
 video = "test_79.mp4"
