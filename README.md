@@ -68,7 +68,7 @@ conda install spyder
 #install functioning version of plotting library
 conda install matplotlib=3.0.3
 #install norman
-pip install norman_ai
+pip install norman-ai
 ```
 Now that installation is complete, perform tests to see if installation was successful using ipython. Ipython is a python program useful for working at the command line.
 
