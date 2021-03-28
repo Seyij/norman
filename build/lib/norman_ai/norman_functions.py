@@ -66,8 +66,10 @@ def reso_change(input_vid, out_vid, res=(640, 480)):
     """ Change resolution of a video.
     
     Arguments:
-        input_vid -- name of input video file 
+        input_vid -- name of input video file
+        
         out_vid -- name you want the output file to be
+        
         res -- resolution of the output file in tuple format (deafult (640,480))
     
     Returns:
@@ -96,8 +98,11 @@ def find_objects(image_or_path, show=False, img_out=False, im_write=False):
     
     Arguments:
         image_or_path -- input image variable or path to input image file
+        
         show -- Boolean for whether object location result is shown in matplotlib window
+        
         img_out -- Boolean for whether object location result is returned as image variable
+        
         im_write -- Name of image file written if required
     
     Returns:
@@ -355,6 +360,7 @@ def hs_process(hscore_file, vid_file):
     
     Arguments:
         hscore_file -- path to csv containing human-scored information on a video
+        
         vid_file -- path to corresponding videofile that was scored
     
     Returns:
@@ -405,7 +411,9 @@ def make_video(image_folder, new_vid, fps=25):
     
     Arguments:
         image_folder -- folder of images to make video from
+        
         new_vid -- name of new video to be made
+        
         fps -- frames per second of output video (default 25)
         
     Returns:
@@ -433,8 +441,11 @@ def median_filt_video(video_name, show=False, out_file=False, select_no=15):
     
     Arguments:
         video_name -- name of input video to be filtered
+        
         show -- Boolean, determines whether the filtered image is shown as a matplotlib window (default false)
+        
         out_file -- Writes an image file if given path.
+        
         select_no -- Number of images used to produced filtered image (default 15)
     
     Returns:
@@ -470,7 +481,9 @@ def rel_pos(poses_file, objects, ret_df=False):
     
     Arguments:
         poses_file -- path to csv file from deeplabcut tracking
+        
         object -- pd data frame produced from find_objects function, containing object location and size information
+        
         df -- Boolean for whether a dataframe is returned in addition to the array
         
     Returns:
@@ -766,7 +779,9 @@ def draw_vid(y_labels, input_vid, out_name=False):
     
     Arguments:
         y_labels -- array containing a label of attention for each frame in the video
+        
         input_vid -- input video to be overlayed
+        
         out_name -- name of video created. If false will add "norman" to the existing file name
     
     Returns:
@@ -834,7 +849,8 @@ def label_vid(relative_pos, model_path="normal"):
     """ Uses norman model to predict classes using relative position
     
     Arguments:
-        model_path -- path to the model file of norman
+        model_path -- path to the model file of norman. The defaults argument loads the default packaged norman model.
+        
         relative_pos -- array of relative position information on a per-frame basis
     
     Returns:
@@ -864,7 +880,9 @@ def calc_di(video, labels, no_loc, ret_all = True):
     
     Arguments:
         video -- path to video file
+        
         labels -- norman labels for each frame in the video
+        
         no_loc -- location of the novel object, can be "left" or "right" respective to the mouse starting position
         
     Returns:
@@ -900,14 +918,23 @@ class norkid:
     
     Attributes:
         video_name -- the name of the input video as a string
+        
         median_img -- a frame from the input video without the mouse
+        
         object_locs -- object locations; the output of the find_objects funtion
+        
         fo_img -- image of find_objects function result
+        
         relative_pos -- relative position of mouse to objects in array
+        
         labels -- frame labels produced by norman predictions
+        
         di -- discrimination index for the video
+        
         tl -- seconds mouse spent with left object
+        
         tr -- seconds mouse spent with right object
+        
         fps -- fps of input video
     
     Methods:
@@ -1035,7 +1062,16 @@ def run_gui():
         no_location = entry_box.get()
         global norkid1
         #use the gathered information to make a norkid object
-        norkid1 = norkid(video_path, pose_path, ml_path, no_location)
+        try:
+            ml_path
+        except NameError:
+            ml_path_exists = False
+        else:
+            ml_path_exists = True
+        #instructing to use default model
+        if ml_path_exists == False:
+            ml_path = "normal"
+        norkid1 = norkid(video_path, pose_path, no_location, ml_path)
         
         #need to do the output boxes within the function
         di_out["text"] = str(round(norkid1.di, 5)) + " au" 
