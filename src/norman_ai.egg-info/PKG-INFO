@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: norman-ai
-Version: 0.0.3
+Version: 0.0.4
 Summary: A package for automation of the novel object recognition test.
 Home-page: https://github.com/Seyij/norman
 Author: seyij_p
@@ -54,7 +54,7 @@ Description: # The NORMAN System
         
         Operating System - Windows 10. This is due to using the [Tensorflow-directml](https://github.com/microsoft/tensorflow-directml) machine learning API. Tensorflow-directml has simple installation, and allows tensorflow use with hardware accelleration on ANY Directx12 capable GPU. That includes AMD, Nvidia, and even Intel GPUs! The only negative is that it is still under active development, but I will make compatibility changes as neccessary.
         
-        Hardware - Tested with laptop i7-9750h, 16Gbs of Ram, RTX 2060 mobile (lower power) with 6Gbs of VRAM. On the described hardware, a 5 minute real-time novel object recognition video will be processed in 15 seconds by NORMAN system, with the deeplabcut tracking step bringing total processing time to 2 minutes 30 seconds. I reccommend any directx12 capable GPU with >= 6Gbs of VRAM.
+        Hardware - Tested with laptop i7-9750h, 16Gbs of Ram, RTX 2060 mobile with 6Gbs of VRAM. You must have a GPU for the system to work. On the described hardware, a 5 minute real-time novel object recognition video will be processed in 15 seconds by NORMAN system, with the deeplabcut tracking step bringing total processing time to 2 minutes 30 seconds. I reccommend any directx12 capable GPU with at least 6Gbs of VRAM.
         
         ### Installation guide
         
@@ -66,19 +66,19 @@ Description: # The NORMAN System
         # Activate the environment so you can install more packages on it
         conda activate norman_dlc
         # install tensorflow with a directml backend
-        pip install tensorflow-directml==1.15.4.dev201216
+        pip install tensorflow-directml
         # install the animal tracking library
-        pip install deeplabcut==2.1.10.2
+        pip install deeplabcut
         # install user interface library for deeplabcut.
         pip install -U wxPython==4.0.7.post2
-        #install spyder for general coding
+        #install spyder for general coding (optional step, not required)
         conda install spyder
         #install functioning version of plotting library
-        conda install matplotlib=3.0.3
+        conda install matplotlib=3.1.3
         #install norman
         pip install norman-ai
         ```
-        Now that installation is complete, perform tests to see if installation was successful using ipython. Ipython is a python program useful for working at the command line.
+        Please note the version of matplotlib may need to be updated depending on the order of installation. Now that installation is complete, perform tests to see if installation was successful using ipython. Ipython is a python program useful for working at the command line.
         
         ```bash
         #open the ipython program
