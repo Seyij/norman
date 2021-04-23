@@ -5,7 +5,7 @@ date: Sep26
 multianimalproject:
 
     # Project path (change when moving around)
-project_path: C:\Users\seyij\Documents\norman_project\cluster_data\nort_demo-Jesusanmi-2019-09-26
+project_path: C:\Users\seyij\Documents\packaging_norman\demo\nort_demo-Jesusanmi-2019-09-26
 
     # Annotation data set configuration (and individual video cropping parameters)
 video_sets:
