@@ -42,46 +42,53 @@ The following guide uses [Anaconda](https://www.anaconda.com/products/individual
 
 The guide assumes a very basic familiarity with anaconda/conda and python, but a user interface is available for those not comfortable coding. If help is needed feel free to contact me, I'd be happy discuss, make changes, and/or post more tutorials. I have also included a glossary in this document for some terms used.
 
-### System requirements
+### System requirements and recommendations
 
-Operating System - Windows 10. This is due to using the [Tensorflow-directml](https://github.com/microsoft/tensorflow-directml) machine learning API. Tensorflow-directml has simple installation, and allows tensorflow use with hardware accelleration on ANY Directx12 capable GPU. That includes AMD, Nvidia, and even Intel GPUs! The only negative is that it is still under active development, but I will make compatibility changes as neccessary.
+__*Operating System*__ - Windows 10 or 11. Note: All the packages used in this project have versions avaialable for Linux and Mac, so versions supporting these operating systems could be considered with sufficient interest.
 
-Hardware - Tested with laptop i7-9750h, 16Gbs of Ram, RTX 2060 mobile with 6Gbs of VRAM. You must have a GPU for the system to work. On the described hardware, a 5 minute real-time novel object recognition video will be processed in 15 seconds by NORMAN system, with the deeplabcut tracking step bringing total processing time to 2 minutes 30 seconds. I reccommend any directx12 capable GPU with at least 6Gbs of VRAM.
+__*GPU*__ - For sufficient processing speed you must have a GPU. You would require an Nvidia GPU that is CUDA compatible and has at least 8Gbs of VRAM to work reliably well on both the Deeplabcut and NORMAN parts of the process.
+
+__*RAM*__ - Recommend 16Gbs
+
+
+__*CPU*__ - Any modern CPU multicore CP.
+
+
+Tested on Windows 10 laptop i7-9750h, 16Gbs of Ram, Nvidia RTX 2060 mobile with 6Gbs of VRAM. On this hardware, I tested 5 minute novel object recognition video at 30fps and 312x480 resolution. The deeplabcut tracking step took ~2 minutes 15 seconds, and the NORMAN system analysis step took ~10 seconds. Also tested with Windows 11 laptop Ryzen 9 6900HX, 16Gbs Ram, Nvidia RTX 3070ti mobile with 8Gbs Ram. 
+
+Note on previous compatibility:
+The NORMAN system previously used [Tensorflow-directml](https://github.com/microsoft/tensorflow-directml) machine learning API. Tensorflow-directml has simple installation, and allows tensorflow use with hardware accelleration on ANY Directx12 capable GPU on a computer runnning Windows. That includes AMD, Nvidia, and even Intel GPUs. However it was still in active development, and at the time of writing it does not have a Tensorflow 2.X version currently available. So it is not compatible with the current versions of Deeplabcut that I reccommend to use with the NORMAN system.
 
 ### Installation guide
 
-By the end of this section you should have an environment that works with deeplabcut, NORMAN, and hardware accelleration through tensorflow-directml. You can manage conda environments using the click-through user interface in Anaconda Navigator, or you can use the command line in anaconda prompt. This guide I will be using the anaconda prompt command line interface. For conda environment management commands, refer to this [conda cheat sheet](https://kapeli.com/cheat_sheets/Conda.docset/Contents/Resources/Documents/index).
+This guide assumes working knowledge of the conda/anaconda environment management system.
+By the end of this section you should have an environment that works with deeplabcut, NORMAN, with GPU hardware accelleration through tensorflow-GPU utilising Nvidia CUDA. You can manage conda environments using the click-through user interface in Anaconda Navigator, or you can use the command line in anaconda prompt. This guide I will be using the anaconda prompt command line interface. For conda environment management commands, refer to this [conda cheat sheet](https://kapeli.com/cheat_sheets/Conda.docset/Contents/Resources/Documents/index).
+
+Firstly install Nvidia CUDA 11.4 on your system from the official website https://developer.nvidia.com/cuda-toolkit-archive. Many other versions may work but 11.4 has beeen tested. After this open anaconda prompt and enter the following commands.
 
 ```bash
-#Create initial environment, ensuring the correct version of h5py is installed
-conda create -n norman_dlc python=3.6 h5py=2.8.0
+#Create initial environment with python and tensorflow installed
+# norman_dlc_cuda can be any name you choose
+conda create -n norman_dlc_cuda python=3.8 tensorflow-gpu=2.5
 # Activate the environment so you can install more packages on it
-conda activate norman_dlc
-# install tensorflow with a directml backend
-pip install tensorflow-directml
+conda activate norman_dlc_cuda
 # install the animal tracking library
-pip install deeplabcut
-# install user interface library for deeplabcut.
-pip install -U wxPython==4.0.7.post2
-#install spyder for general coding (optional step, not required)
-conda install spyder
-#install functioning version of plotting library
-conda install matplotlib=3.1.3
+pip install "deeplabcut[gui]"==2.3.0
 #install norman
 pip install norman-ai
+#install required version of numpy
+conda install numpy==1.23.4
 ```
-Please note the version of matplotlib may need to be updated depending on the order of installation. Now that installation is complete, perform tests to see if installation was successful using ipython. Ipython is a python program useful for working at the command line.
+Now that installation is complete, perform tests to see if installation was successful using ipython. Ipython is a python program useful for working at the command line.
 
 ```bash
 #open the ipython program
 ipython
 ```
 ```python
-#check if your graphics card is recognised by direcml after installation
-#within ipython program import tensorflow
-import tensorflow as tf
-#type code to check if gpu device is recognised
-sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+#check if your graphics card is recognised by tensorflow after installation
+
+import tensorflow as tfprint("Num GPUs Available: ", len(tf.config.list_physical_devices("GPU")))
 
 #check if norman was installed
 import norman_ai.norman_functions as nf
