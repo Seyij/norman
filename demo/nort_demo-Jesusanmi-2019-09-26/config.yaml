@@ -3,9 +3,10 @@ Task: nort_demo
 scorer: Jesusanmi
 date: Sep26
 multianimalproject:
+identity:
 
     # Project path (change when moving around)
-project_path: C:\Users\seyij\Documents\packaging_norman\demo\nort_demo-Jesusanmi-2019-09-26
+project_path: C:/Users/oj74/norman/demo/nort_demo-Jesusanmi-2019-09-26
 
     # Annotation data set configuration (and individual video cropping parameters)
 video_sets:
@@ -23,6 +24,8 @@ bodyparts:
 - l_ear
 - r_ear
 - tailbase
+
+    # Fraction of video to start/stop when extracting frames for labeling/refinement
 start: 0
 stop: 1
 numframes2pick: 50
@@ -50,7 +53,6 @@ batch_size: 8
 
     # Cropping Parameters (for analysis and outlier frame detection)
 cropping: false
-croppedtraining:
     #if cropping is true for analysis, then set the values here:
 x1: 0
 x2: 640
@@ -62,4 +64,5 @@ corner2move2:
 - 50
 - 50
 move2corner: true
+croppedtraining:
 resnet: 50

@@ -91,6 +91,78 @@ def reso_change(input_vid, out_vid, res=(640, 480)):
         out.write(sm_frame)
     vid.release()
     out.release()
+#%%
+def draw_objects(image_or_path):
+    """
+    Use this function to draw where the objects are in your image of the experiment box.
+    
+    Parameters
+    ----------
+    source_path : TYPE
+        Path to image showing objects.
+        Or image array of images showing objects.
+
+    Returns
+    -------
+    blank_img : TYPE
+        Image to be sent to find_objects function for object identification.
+
+    """
+    drawing = False # true if mouse is pressed
+    
+    # define mouse callback function to draw circle
+    def draw_curve(event, x, y, flags, param):
+        global pt1_x,pt1_y,drawing
+    
+        if event==cv2.EVENT_LBUTTONDOWN:
+            drawing=True
+            pt1_x,pt1_y=x,y
+    
+        elif event==cv2.EVENT_MOUSEMOVE:
+            if drawing==True:
+                cv2.line(source_img,(pt1_x,pt1_y),(x,y),color=(255,255,255),thickness=2)
+                cv2.line(blank_img,(pt1_x,pt1_y),(x,y),color=(255,255,255),thickness=2)
+                pt1_x,pt1_y=x,y
+        elif event==cv2.EVENT_LBUTTONUP:
+            drawing=False
+            cv2.line(source_img,(pt1_x,pt1_y),(x,y),color=(255,255,255),thickness=2)
+            cv2.line(blank_img,(pt1_x,pt1_y),(x,y),color=(255,255,255),thickness=2)
+    
+    
+    if type(image_or_path) == str:
+        source_img = cv2.imread(image_or_path)
+        
+    #if loaded image array just use that
+    else:
+        source_img = image_or_path
+    
+    
+    # Create a black image the same size as input image
+    blank_img = np.zeros((source_img.shape[0],source_img.shape[1],3), np.uint8)
+    
+    # Create a window and bind the function to window
+    cv2.namedWindow("Draw objects Window")
+    
+    # Connect the mouse button to our callback function
+    cv2.setMouseCallback("Draw objects Window", draw_curve)
+    
+    # display the window
+    while True:
+       cv2.imshow("Draw objects Window", source_img)
+       #if r key is pressed, reset
+       if cv2.waitKey(1) == ord("r"):
+           if type(image_or_path) == str:
+               source_img = cv2.imread(image_or_path)
+           #if loaded image array just use that
+           else:
+               source_img = image_or_path
+           blank_img = np.zeros((source_img.shape[0],source_img.shape[1],3), np.uint8)
+    #if escape key is pressed
+       if cv2.waitKey(1) == 27:
+          break
+    cv2.destroyAllWindows()
+    return blank_img
+
 
 #%% add image, threshold and find contours. use TREE for hierarchy
 def find_objects(image_or_path, show=False, img_out=False, im_write=False):
@@ -942,13 +1014,17 @@ class norkid:
     
     """
     #the class takes in a video and the associated deeplabcut pose file for it
-    def __init__(self, video, pose_file, no_loc, model_path="normal"):
+    def __init__(self, video, pose_file, no_loc, draw_obj=False, model_path="normal"):
         #have the name of the video as a string
         self.video_name = video
         #the median image is a frame from the video without the mouse 
         self.median_img = median_filt_video(video)
         # object locations are the output of the find objects funtion
-        self.object_locs, self.fo_img = find_objects(self.median_img, img_out = True)
+        if draw_obj=True:
+            self.object_locs, self.fo_img = find_objects(self.median_img, img_out = True)
+        if draw_obj=False:
+            x = draw_objects(self.median_img)
+            self.object_locs, self.fo_img = find_objects(x, img_out = True)
         # use relative position
         self.relative_pos = rel_pos(pose_file, self.object_locs)
         #get labels produced by the classification by norman

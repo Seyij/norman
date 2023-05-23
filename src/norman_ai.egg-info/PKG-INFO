@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: norman-ai
-Version: 0.0.5
+Version: 0.0.6
 Summary: A package for automation of the novel object recognition test.
 Home-page: https://github.com/Seyij/norman
 Author: seyij_p
@@ -112,7 +112,7 @@ nf.run_gui()
 
 ### Video to DI walkthrough
 
-This section will take you through the basic steps required to get a DI from a video and to visualise NORMAN'S labelling, both using the provided user interface and with code. Make sure you are in the "norman_dlc" environment before proceeding.
+This section will take you through the basic steps required to get a DI from a video and to visualise NORMAN'S labelling, both using the provided user interface and with code. Make sure you are in the conda environment with norman and deeplabcut installed before proceeding. Please note that the user interface is primarily for demonstration purposes. To fully take advantage of NORMAN and process in batches for your own application, the code method is what you should use.
 
 ##### __*User interface method*__
 
@@ -179,7 +179,7 @@ From here NORMAN functions use information from the video file combined with the
 poses = r"test_79DLC_resnet_50_nort_demoSep26shuffle1_50000_filtered.csv"
 
 #create norkid python object
-# stating the novel object is the left object in the experiment
+# stating the novel object is the left object in the experiment, if the right object is novel state "right"
 x = nf.norkid(video, poses, "left")
 
 #show the discrimination index, the time spent with left object, time spent with right object
@@ -190,7 +190,28 @@ print("DI:"+str(x.di)+", Time left:"+str(x.tl)+ ", Time right:"+ str(x.tr))
 x.draw_vid()
 
 ```
-If you have trouble with this demo, please see the function details, which contain code examples and guidance on other functions in the NORMAN package. When attempting this with your own data, the most common error is related to the find_objects() function, as not all NORT mouse chambers are compatible with the object detection algorithm. If this is the case with your data I am happy to work on variant object detectors.
+If you have trouble with this demo, please see the function details, which contain code examples and guidance on other functions in the NORMAN package. 
+
+When using NORMAN with your own data, the most common problem is related to the find_objects() function, as not all NORT mouse chambers are compatible with the object detection algorithm. If this is the case you can use a conditional argument to draw the location of the experimental objects, and all the other parts of analysis will still be done automatically.
+![draw](https://github.com/Seyij/norman/blob/master/media/draw_objects.png)
+
+Hold the "r" key to reset the drawing and hold the escape key to exit once the drawing is complete.
+
+```python
+#if you wish to mark object locations yourself use draw_objects as true
+#hold r to reset the drawing
+#press escape to exit the window once the drawing is complete
+x = nf.norkid(video, poses, "left", draw_objects=True)
+
+#show the discrimination index, the time spent with left object, time spent with right object
+print("DI:"+str(x.di)+", Time left:"+str(x.tl)+ ", Time right:"+ str(x.tr))
+
+#make an video visualisation of norman labelling the mouse video
+#this is optional as not every video result will need visualisation
+x.draw_vid()
+
+
+```
 
 ### Function details
 
