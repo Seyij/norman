@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: norman-ai
-Version: 0.0.6
+Version: 0.0.7
 Summary: A package for automation of the novel object recognition test.
 Home-page: https://github.com/Seyij/norman
 Author: seyij_p
@@ -479,6 +479,21 @@ print(round(di, 2), round(tl , 2), round(tr,2) , round(fps, 2))
 0.35 20.81 43.66 18.07
 
 ```
+
+##### __*Converting maze project csv into one compatible with NORMAN*__
+
+Note: This function is only applicable to one specific project. This is a function to convert Deeplabcut output that was recorded from the bottom of the mouse to one compatible with the rest of the NORMAN system. It assumes the nose, mid and tailbase of the mouse marked were marked in Deeplabcut, and uses these to infer where the ears are, then creates a new CSV based on this. This csv file can then be used as a normal pose file in the system going forwards. It would be advisable to use this function in a loop to do a lot of files at once.
+
+```python
+#get name of the file you want to convert
+maze_pose_file = r"maze_dlc_output.csv"
+#name of the the new file you want to create
+new_file_name = "converted_file.csv"
+#convert the file
+nf.maze_file_convert(maze_pose_file, new_file_name)
+```
+
+
 
 ### Using Deeplabcut with NORMAN.
 

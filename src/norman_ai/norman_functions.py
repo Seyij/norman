@@ -1020,9 +1020,9 @@ class norkid:
         #the median image is a frame from the video without the mouse 
         self.median_img = median_filt_video(video)
         # object locations are the output of the find objects funtion
-        if draw_obj=True:
+        if draw_obj==True:
             self.object_locs, self.fo_img = find_objects(self.median_img, img_out = True)
-        if draw_obj=False:
+        if draw_obj==False:
             x = draw_objects(self.median_img)
             self.object_locs, self.fo_img = find_objects(x, img_out = True)
         # use relative position
@@ -1265,7 +1265,131 @@ def run_gui():
     #this loop keeps the program working apparently
     window.mainloop()
 
+#%% 
 
+def maze_file_convert(poses_file, output_file_name):
+    """
+    Function to convert Deeplabcut output that was recorded from the bottom of the mouse to one compatible with the rest of the NORMAN system.
+    It assumes the nose, mid and tailbase of the mouse marked were marked, and uses these to infer where the ears are, then creates a new CSV based on this.
+
+    Parameters
+    ----------
+    poses_file : string
+        Path to deeplabcut file recorded from maze that you wish to convert.
+    output_file_name : string
+        What you want the new file name to be call
+
+    Returns
+    -------
+    TYPE
+        Outputs a csv file to feed into late parts of the NORMAN system.
+
+    """
+    
+    #make import distance function
+    def distance(point1, point2):
+        return np.sqrt((point2[0] - point1[0])**2 + (point2[1] - point1[1])**2)
+    
+        #make midpoint function
+    def midpoint(point1, point2):
+        return ((point2[0] + point1[0])/2 , (point2[1] + point1[1])/2)
+    
+    def ext_frame(vid_name, frame_index, out_name=False):
+        """ Extract a frame or multiple frames from a video.
+        
+        Keyword arguments:
+            vid_name -- name of input video
+            
+            frame_index -- frame or frame number to be extracted. Accepts integer for single frame. Accepts tuple or list with 2 numbers representing range of frames to be extracted.
+            
+            out_name -- name of image file output for single frame, or folder output for multiple frames (default False). 
+        
+        Returns:
+            If extracting single frame with out_name=False, the function returns image matrix, with a out_name it writes an image file in the current working directory. If extracting multiple frames it writes a folder of images or writes many images to the cwd. 
+        
+        """
+        if type(frame_index) == int:
+            vid = cv2.VideoCapture(vid_name)
+            print("Total amount of frames: " + str(vid.get(7)))
+            vid.set(1, frame_index)
+            ret, frame = vid.read()
+            vid.release()
+            if out_name == False:
+                return frame
+            else:
+                cv2.imwrite(out_name, frame)
+        #section for mutiple frames
+        else:
+            vid = cv2.VideoCapture(vid_name)
+            a,b = frame_index
+            if out_name == False:
+                out_name = ""
+                slash = ""
+            else:
+                os.mkdir(out_name)
+                slash = "\\"
+            #range cant iterate tuples, but it accepts multiple integers
+            for number in range(a, b):
+                vid.set(1, number)
+                ret, frame = vid.read()
+                cv2.imwrite(out_name+slash+str(number)+".png", frame)
+            vid.release()
+            
+    #% read in file
+    #poses_file = "maze_dlc_output.csv"
+    
+    #read in maze dlc data
+    maze_poses = pd.read_csv(poses_file, header=2)        
+    maze_poses.columns=["frame_no", "nose_x", "nose_y", "nose_prob", "mid_x", "mid_y","mid_prob", "tailbase_x", "tailbase_y", "tailbase_prob"]
+    
+    #% extract image from video for plotting
+    
+    #% extract coordinates from all key points
+    nose = (maze_poses["nose_x"], maze_poses["nose_y"])
+    mid = (maze_poses["mid_x"], maze_poses["mid_y"])
+    #tailbase = (maze_poses["tailbase_x"], maze_poses["tailbase_y"])
+    #the distance from the nose to the mid point
+    #nose2mid = distance((maze_poses["nose_x"], maze_poses["nose_y"]), (maze_poses["mid_x"], maze_poses["mid_y"]))
+    
+    #get point halway between nose and mid
+    between_nm = midpoint(nose, mid)
+    
+    
+    # start halway between nose and centre of mouse
+    x1 = between_nm[0]
+    y1 = between_nm[1]
+    # diagonaly opposite point is at the nose
+    x2 = nose[0]
+    y2 = nose[1]
+    #coords of center point
+    xc = (x1 + x2)/2 
+    yc = (y1 + y2)/2
+    #coords of Half-diagonal
+    xd = (x1 - x2)/2
+    yd = (y1 - y2)/2
+    
+    #corner 3 left ear
+    x3 = xc - yd
+    y3 = yc + xd
+    #corner right ear
+    x4 = xc + yd
+    y4 = yc - xd
+    
+    
+    #% make new data frame
+    
+    new_maze_df = pd.DataFrame({"frame_no":maze_poses["frame_no"],
+                  "nose_x":maze_poses["nose_x"], "nose_y":maze_poses["nose_y"], "nose_prob":maze_poses["nose_prob"],
+                  "l_ear_x":x3, "l_ear_y":y3, "l_ear_prob":maze_poses["nose_prob"],
+                  "r_ear_x":x4, "r_ear_y":y4,"r_ear_prob":maze_poses["nose_prob"],
+                  "tailbase_x":maze_poses["tailbase_x"], "tailbase_y":maze_poses["tailbase_y"], "tailbase_prob":maze_poses["tailbase_prob"]})
+    
+    
+    #% make new file and header
+    
+    with open(output_file_name, 'a', newline="\n") as file:
+        file.write('scorer, default, default, default, default, default, default, default, default, default, default, default, default\n bodyparts, nose, nose, nose, l_ear, l_ear, l_ear, r_ear, r_ear, r_ear, tailbase, tailbase, tailbase\n coords, x, y, likelihood, x, y, likelihood, x, y, likelihood, x, y, likelihood\n')
+        new_maze_df.to_csv(file, header=False, index=False, mode="a")
 
 
 

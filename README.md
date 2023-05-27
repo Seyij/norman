@@ -466,6 +466,21 @@ print(round(di, 2), round(tl , 2), round(tr,2) , round(fps, 2))
 
 ```
 
+##### __*Converting maze project csv into one compatible with NORMAN*__
+
+Note: This function is only applicable to one specific project. This is a function to convert Deeplabcut output that was recorded from the bottom of the mouse to one compatible with the rest of the NORMAN system. It assumes the nose, mid and tailbase of the mouse marked were marked in Deeplabcut, and uses these to infer where the ears are, then creates a new CSV based on this. This csv file can then be used as a normal pose file in the system going forwards. It would be advisable to use this function in a loop to do a lot of files at once.
+
+```python
+#get name of the file you want to convert
+maze_pose_file = r"maze_dlc_output.csv"
+#name of the the new file you want to create
+new_file_name = "converted_file.csv"
+#convert the file
+nf.maze_file_convert(maze_pose_file, new_file_name)
+```
+
+
+
 ### Using Deeplabcut with NORMAN.
 
 Deeplabcut is a python library for marker-less tracking of animals using artificial neural networks. It provides a variety of functions centred around streamlining the process of tracking animals. The general workflow of the library is to use a neural network that has been pretrained on animal movement, train it to recognise features on the animal you wish to track by labelling images, then use the trained network to track animal movement on a selection of videos. For in depth details please refer to the official [deeplabcut tutorials on github](https://github.com/DeepLabCut/DeepLabCut/blob/master/docs/UseOverviewGuide.md). Here I will briefly discuss points that are relevant for using Deeplabcut in tandem with the NORMAN system.
