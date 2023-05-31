@@ -88,7 +88,8 @@ ipython
 ```python
 #check if your graphics card is recognised by tensorflow after installation
 
-import tensorflow as tfprint("Num GPUs Available: ", len(tf.config.list_physical_devices("GPU")))
+import tensorflow as tf
+print("Num GPUs Available: ", len(tf.config.list_physical_devices("GPU")))
 
 #check if norman was installed
 import norman_ai.norman_functions as nf
@@ -187,7 +188,7 @@ Hold the "r" key to reset the drawing and hold the escape key to exit once the d
 #if you wish to mark object locations yourself use draw_objects as true
 #hold r to reset the drawing
 #press escape to exit the window once the drawing is complete
-x = nf.norkid(video, poses, "left", draw_objects=True)
+x = nf.norkid(video, poses, "left", draw_obj=True)
 
 #show the discrimination index, the time spent with left object, time spent with right object
 print("DI:"+str(x.di)+", Time left:"+str(x.tl)+ ", Time right:"+ str(x.tr))

@@ -1020,9 +1020,9 @@ class norkid:
         #the median image is a frame from the video without the mouse 
         self.median_img = median_filt_video(video)
         # object locations are the output of the find objects funtion
-        if draw_obj==True:
-            self.object_locs, self.fo_img = find_objects(self.median_img, img_out = True)
         if draw_obj==False:
+            self.object_locs, self.fo_img = find_objects(self.median_img, img_out = True)
+        if draw_obj==True:
             x = draw_objects(self.median_img)
             self.object_locs, self.fo_img = find_objects(x, img_out = True)
         # use relative position
