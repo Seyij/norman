@@ -4,11 +4,8 @@ The Novel Object Recognition Mouse Analysis Network (NORMAN) system is a package
 
 PyPi link: https://pypi.org/project/norman-ai/
 
-This is part of work that will be presented as a poster at the [BNA Festival 2021](https://meetings.bna.org.uk/bna2021/) which runs from the 12-15th of April. It was developed as part of an MSci degree at the University of Dundee. The package and repository will be updated with video outlines and other details shortly, in the run up to the BNA festival.
-
 Author: Oluwaseyi Jesusanmi  
 Twitter: @neuroseyience   
-
 
 ![NORMAN labelling example0](https://github.com/Seyij/norman/blob/master/media/slide11_vid_Trim.gif)
 ![NORMAN labelling example1](https://github.com/Seyij/norman/blob/master/media/test_79_norman_Trim.gif)
