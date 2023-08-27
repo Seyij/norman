@@ -18,9 +18,10 @@ Twitter: @neuroseyience
 1. [System Overview](#system-overview)
 2. [System Requirements](#system-requirements)
 3. [Installation guide](#installation-guide)
+4. [Deeplabcut compatibility](#deeplabcut-compatibility)
 4. [Video to DI walkthrough](#video-to-di-walkthrough)
 5. [Function details](#function-details)
-6. [Using Deeplabcut with NORMAN](#using-deeplabcut-with-norman)
+6. [Tips for using Deeplabcut with NORMAN](#using-deeplabcut-with-norman)
 7. [Glossary](#glossary)
 
 
@@ -97,6 +98,10 @@ nf.run_gui()
 #a user interface should appear
 ```
 
+### Deeplabcut compatibility
+
+When labelling frames to train Deeplabcut to track mice or rats, please ensure the labels are added in the right order with the correct text. This is to ensure the output csv from deeplabcut analysis is compatible with the NORMAN system. The list of labels is: nose, l_ear, r_ear, tailbase. L_ear refers to left ear, r_ear refers the right ear, and tailbase refers to where the tail connects to the main body of the mouse.
+
 ### Video to DI walkthrough
 
 This section will take you through the basic steps required to get a DI from a video and to visualise NORMAN'S labelling, both using the provided user interface and with code. Make sure you are in the conda environment with norman and deeplabcut installed before proceeding. Please note that the user interface is primarily for demonstration purposes. To fully take advantage of NORMAN and process in batches for your own application, the code method is what you should use.
@@ -128,7 +133,6 @@ nf.run_gui()
 ![gui5](https://github.com/Seyij/norman/blob/master/media/gui5.png)
 7. Press the "Visualisation of NORMAN labelling" button to produce a video showing how NORMAN labelled the video. The video will be in the same directory as the original video, with "norman" added to the name.
 * Play the video and see how NORMAN does.
-
 
 
 ##### __*Code-based method*__
@@ -490,7 +494,7 @@ Installation – The tutorials recommend tensorflow-gpu installation for using D
 
 Config file – When you start a new deeplabcut project it creates a folder with a “config.yaml” file. This config file is what all the functions use to find other files in the directory, such as the location of the trained models. The entire project folder can be moved, copied and shared. As long as the information in the config file is up do date, all the functions should work as normal.
 
-Training a deeplabcut model – When labelling frames to train Deeplabcut to track mice or rats, please ensure the labels are added in the right order with the correct text. This is to ensure the output csv from deeplabcut analysis is compatible with the NORMAN system. The list of labels is: nose, l_ear, r_ear, tailbase. L_ear refers to left ear, r_ear refers the right ear, and tailbase refers to where the tail connects to the main body of the mouse. If you are training a Deeplabcut network with a GPU that has less than 8Gbs of video memory (VRAM), you may run into memory allocation errors. To solve this you must change the session parameters to allow a procedural change in memory allocation during training . The following code implements this:
+Training a deeplabcut model –  If you are training a Deeplabcut network with a GPU that has less than 8Gbs of video memory (VRAM), you may run into memory allocation errors. To solve this you must change the session parameters to allow a procedural change in memory allocation during training . The following code implements this:
 
 ```python
 config = tf.ConfigProto()
